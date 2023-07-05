@@ -1,0 +1,13 @@
+diff --git a/drivers/platform/x86/amd/pmc.c b/drivers/platform/x86/amd/pmc.c
+index 427905714..fcac45bfc 100644
+--- a/drivers/platform/x86/amd/pmc.c
++++ b/drivers/platform/x86/amd/pmc.c
+@@ -812,7 +812,7 @@ static void amd_pmc_s2idle_check(void)
+ 	int rc;
+ 
+ 	/* CZN: Ensure that future s0i3 entry attempts at least 10ms passed */
+-	if (pdev->cpu_id == AMD_CPU_ID_CZN && !get_metrics_table(pdev, &table) &&
++	if (!get_metrics_table(pdev, &table) &&
+ 	    table.s0i3_last_entry_status)
+ 		usleep_range(10000, 20000);
+ 
